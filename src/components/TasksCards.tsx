@@ -91,7 +91,7 @@ export const TasksCards = (props: TasksCardsProps) => {
             >
               <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Card.Content style={{flexShrink: 1}}>
-                  <Title style={{marginTop: 15, fontSize: 18}}>{card.title}</Title>
+                  <Title style={{marginTop: 15, fontSize: 18, color: 'black'}}>{card.title}</Title>
                 </Card.Content>
                 <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
                   <IconButton

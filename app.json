@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Custom Tasks",
-    "slug": "Custom Tasks",
+    "slug": "CustomNotes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icono-custom-tasks.jpg",
@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icono-custom-tasks.jpg",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.calichin2399.CustomNotes"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b2c050c9-eaf6-4701-9d05-2e15ef5fe507"
+      }
     }
   }
 }
