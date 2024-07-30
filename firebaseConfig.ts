@@ -30,11 +30,9 @@ export const addTaskToFirebase = async (taskTitle: string, taskDescription: stri
   try {
     const taskCollection = collection(db, "Tasks");
     const docRef = await addDoc(taskCollection, newTask);
-    console.log("Se creo la tarea con el ID: ", docRef.id);
     return {success: true, id: docRef.id};
 
   } catch (error) {
-    console.error(error);
     return { success: false, error: error };
   }
 };
@@ -55,9 +53,9 @@ export const updateTask = async (taskId: string, updatedTask: Partial<AddTaskTyp
   try {
     const taskRef = doc(db, "Tasks", taskId);
     await updateDoc(taskRef, updatedTask);
-    console.log(`Tarea con el ID: ${taskId} ha sido exitosamente actualizada`);
+    return {success: true};
   } catch (error) {
-    console.error("Error actualizando la tarea: ", error);
+    return { success: false, error: error };
   }
 };
 

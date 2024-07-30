@@ -1,4 +1,3 @@
-import {Dispatch, SetStateAction} from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 
@@ -29,3 +28,9 @@ export interface RemoveTaskProps {
   setShowRemove: (isVisible: boolean) => void;
   element: AddTaskType;
 }
+
+export const STATUS_LIST = [
+  { label: 'Pendiente', value: 'Pending' },
+  { label: 'En Progreso', value: 'Progress' },
+  { label: 'Completada', value: 'Completed' },
+]

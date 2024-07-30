@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, ScrollView, View, Text, ActivityIndicator} from 'react-native';
 import {Card, Title, IconButton, Portal} from 'react-native-paper';
 import {AddTaskType} from "../types/TaskTypes";
-import {CardDetails} from "./CardDetails";
+import {TaskEditor} from "./TaskEditor";
 import {getAllTasks} from "../../firebaseConfig";
 import {showDeleteToast} from "../alerts/showToats";
+import {Divider} from "react-native-elements";
 
 interface TasksCardsProps {
   searchQuery: string;
@@ -30,8 +31,8 @@ export const TasksCards = (props: TasksCardsProps) => {
   }
 
   useEffect(() => {
-    if (selectedCard && deleteTask) {
-      showDeleteToast(selectedCard, setDeleteTask);
+    if (selectedCard && deleteTask && props.setUpdateTasks) {
+      showDeleteToast(selectedCard, setDeleteTask, props.setUpdateTasks, setShowDetails);
     }
   }, [deleteTask]);
 
@@ -45,8 +46,9 @@ export const TasksCards = (props: TasksCardsProps) => {
   }, [updateTasks]);
 
   const statusOrder: Record<string, number> = {
-    'Pending': 2,
+    'Pending': 1,
     'Completed': 3,
+    'In Progress': 2,
   };
 
   const filteredCards = cards.filter(
@@ -89,7 +91,7 @@ export const TasksCards = (props: TasksCardsProps) => {
             >
               <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Card.Content style={{flexShrink: 1}}>
-                  <Title style={{marginTop: 15}}>{card.title}</Title>
+                  <Title style={{marginTop: 15, fontSize: 18}}>{card.title}</Title>
                 </Card.Content>
                 <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
                   <IconButton
@@ -114,12 +116,13 @@ export const TasksCards = (props: TasksCardsProps) => {
                 </View>
               </View>
             </Card>
+            <Divider style={{marginBottom:15}} width={1} />
           </>
         ))
       )}
     </ScrollView>
     <Portal>
-      <CardDetails showDetails={showDetails} setShowDetails={setShowDetails} element={selectedCard!}/>
+      <TaskEditor task={selectedCard!} isVisible={showDetails} setIsVisible={setShowDetails} setUpdateTasks={props.setUpdateTasks}/>
     </Portal>
     </>
   );

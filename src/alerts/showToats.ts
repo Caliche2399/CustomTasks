@@ -13,7 +13,10 @@ export default function showToast(type: ALERT_TYPE, title: string, textBody: str
   });
 }
 
-export function showDeleteToast(element: AddTaskType, setBooleanState: Dispatch<SetStateAction<boolean>> ) {
+export function showDeleteToast(element: AddTaskType,
+                                setBooleanState: Dispatch<SetStateAction<boolean>>,
+                                updateTasks: (isVisible: boolean) => void,
+                                setShowDetails: (isVisible: boolean) => void) {
 
   rnDialog.show({
     type: ALERT_TYPE.WARNING,
@@ -23,6 +26,8 @@ export function showDeleteToast(element: AddTaskType, setBooleanState: Dispatch<
     onPressButton: async () => {
       try {
         await deleteTask(element.id);
+        updateTasks(true);
+        setShowDetails(false);
         showToast(ALERT_TYPE.SUCCESS, 'Eliminada', 'La tarea se elimino exitosamente');
       } catch (error) {
         showToast(ALERT_TYPE.DANGER, 'UPS!', 'Hubo un error al eliminar la tarea.')
