@@ -1,16 +1,21 @@
 import { StyleSheet, View } from 'react-native';
-import {Header, Icon} from "react-native-elements";
-import {useState} from "react";
+import {Button, Header, Icon} from "react-native-elements";
+import {useEffect, useState} from "react";
 import {AddTaskForm} from "./src/components/AddTaskForm";
 import { Root } from "react-native-alert-notification";
 import TasksScreen from "./src/screens/TasksScreen";
 import {Provider} from "react-native-paper";
+import {initializeNotifications} from "./src/lib";
 
 export default function App() {
 
   const [isVisible, setIsVisible] = useState(false);
 
   const [updateTasks, setUpdateTasks] = useState(false);
+
+  useEffect(() => {
+    initializeNotifications().then(()=> console.log("inicie las notiifaciciones"))
+  }, []);
 
   return (
     <Provider >

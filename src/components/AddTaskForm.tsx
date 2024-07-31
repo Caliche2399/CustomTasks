@@ -5,6 +5,7 @@ import {AddTaskFormProps} from "../types/TaskTypes";
 import {addTaskToFirebase} from "../../firebaseConfig";
 import {ALERT_TYPE} from 'react-native-alert-notification';
 import showToast from "../alerts/showToats";
+import {scheduleNotification} from "../lib/notifications";
 
 export const AddTaskForm = (props:AddTaskFormProps) => {
 
@@ -18,6 +19,10 @@ export const AddTaskForm = (props:AddTaskFormProps) => {
     setDuration(0);
   }
 
+  const sendNotification =(title:string, body:string) =>{
+    scheduleNotification(title, body);
+  }
+
   const handleSubmit = () => {
 
     addTaskToFirebase(taskTitle, taskDescription, duration)
@@ -25,6 +30,7 @@ export const AddTaskForm = (props:AddTaskFormProps) => {
         if (response && response.success) {
           showToast(ALERT_TYPE.SUCCESS, 'Tarea Creada', `Se creo la tarea ${response.id} de manera exitosa`)
           clearOptions()
+          sendNotification("Tarea Creada","Se ha creado la tarea con exito");
           if(props.setUpdateTasks){
             props.setUpdateTasks(true);
           }
