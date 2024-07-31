@@ -33,6 +33,7 @@ export const TaskEditor = (props: TaskEditorProps) => {
       setTaskTitle(props.task.title);
       setTaskDescription(props.task.description);
       setDuration(props.task.duration);
+      setSelectedOption(props.task.status);
     }
   }, [props.task]);
 
@@ -58,7 +59,7 @@ export const TaskEditor = (props: TaskEditorProps) => {
         }
       })
       .catch((error) => {
-        showToast(ALERT_TYPE.DANGER, 'Error', 'Hubo un error al actualizar la tarea Inténtalo de nuevo')
+        showToast(ALERT_TYPE.DANGER, 'Error', `Hubo un error al actualizar la tarea Inténtalo de nuevo ${error}`)
       });
 
   }
@@ -94,7 +95,7 @@ export const TaskEditor = (props: TaskEditorProps) => {
           {STATUS_LIST.map((status, index) => (
             <View>
               <CheckBox
-                key={status.label}
+                key={index}
                 disabled={!editing}
                 checkedIcon='dot-circle-o'
                 uncheckedIcon='circle-o'
