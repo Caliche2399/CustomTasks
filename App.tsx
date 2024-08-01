@@ -8,9 +8,9 @@ export default function App() {
   return (
     <Provider >
       <Root>
-          <NavigationContainer>
-            <NavigationTabs />
-          </NavigationContainer>
+        <NavigationContainer>
+          <NavigationTabs />
+        </NavigationContainer>
       </Root>
     </Provider>
   );
