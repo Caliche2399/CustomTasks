@@ -37,6 +37,11 @@ export const TemporizadorComponent = () => {
     setIsActive(false);
   }
 
+  const completeCountdown = () => {
+    clearOptions();
+    setIsActive(false);
+  }
+
   const startCountdown = () => {
     setIsActive(true);
     let totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
@@ -44,6 +49,7 @@ export const TemporizadorComponent = () => {
     const interval: NodeJS.Timeout = setInterval(() => {
       if (totalSeconds <= 0) {
         clearInterval(interval);
+        completeCountdown()
       } else {
         setSeconds(totalSeconds % 60);
         setMinutes(Math.floor(totalSeconds / 60) % 60);
