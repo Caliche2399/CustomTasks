@@ -71,7 +71,6 @@ export const TemporizadorComponent = () => {
         <View style={style.infoContainer}>
           <RNPickerSelect
             onValueChange={(value) => setHours(value)}
-            placeholder={{ label: "00", value: 0 }}
             items={pickerOptions}
             useNativeAndroidPickerStyle={false}
             value={hours}
@@ -80,7 +79,6 @@ export const TemporizadorComponent = () => {
           <Text style={style.infoTextStyle}>:</Text>
           <RNPickerSelect
             onValueChange={(value) => setMinutes(value)}
-            placeholder={{color:'black', label: "00", value: 0 }}
             items={pickerOptions}
             value={minutes}
             useNativeAndroidPickerStyle={false}
@@ -89,7 +87,6 @@ export const TemporizadorComponent = () => {
           <Text style={style.infoTextStyle}>:</Text>
           <RNPickerSelect
             onValueChange={(value) => setSeconds(value)}
-            placeholder={{ label: "00", value: 0 }}
             items={pickerOptions}
             value={seconds}
             useNativeAndroidPickerStyle={false}
@@ -161,7 +158,7 @@ const style = StyleSheet.create({
   },
   infoTextStyle: {
     fontSize: 55,
-    color: 'gray',
+    color: 'black',
     fontWeight: 'semibold'
   },
 })
