@@ -34,3 +34,9 @@ export const STATUS_LIST = [
   { label: 'En Progreso', value: 'Progress' },
   { label: 'Completada', value: 'Completed' },
 ]
+
+export const SCREENS_ICONS =[
+  {screen: "Tareas", value: "list", type:"material"},
+  {screen: "Cronometro", value: "timer", type:"material"},
+  {screen: "Temporizador", value: "hourglass-empty", type:"material"},
+]

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Button, CheckBox, Dialog, Icon, Slider} from 'react-native-elements';
-import {AddTaskType, STATUS_LIST} from '../types/TaskTypes';
+import {AddTaskType, STATUS_LIST} from '../../types/TaskTypes';
 import {StyleSheet, Text, TextInput, View} from "react-native";
-import {updateTask} from "../../firebaseConfig";
-import showToast from "../alerts/showToats";
+import {updateTask} from "../../../firebaseConfig";
+import showToast from "../../alerts/showToats";
 import {ALERT_TYPE} from "react-native-alert-notification";
 
 interface TaskEditorProps {

@@ -1,11 +1,11 @@
 import {Alert, StyleSheet, Text, TextInput, View} from "react-native";
 import {Button, Dialog, Icon, Slider} from "react-native-elements";
 import {useState} from "react";
-import {AddTaskFormProps} from "../types/TaskTypes";
-import {addTaskToFirebase} from "../../firebaseConfig";
+import {AddTaskFormProps} from "../../types/TaskTypes";
+import {addTaskToFirebase} from "../../../firebaseConfig";
 import {ALERT_TYPE} from 'react-native-alert-notification';
-import showToast from "../alerts/showToats";
-import {scheduleNotification} from "../lib/notifications";
+import showToast from "../../alerts/showToats";
+import {scheduleNotification} from "../../lib/notifications";
 
 export const AddTaskForm = (props:AddTaskFormProps) => {
 

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, ScrollView, View, Text, ActivityIndicator} from 'react-native';
 import {Card, Title, IconButton, Portal} from 'react-native-paper';
-import {AddTaskType} from "../types/TaskTypes";
+import {AddTaskType} from "../../types/TaskTypes";
 import {TaskEditor} from "./TaskEditor";
-import {getAllTasks} from "../../firebaseConfig";
-import {showDeleteToast} from "../alerts/showToats";
+import {getAllTasks} from "../../../firebaseConfig";
+import {showDeleteToast} from "../../alerts/showToats";
 import {Divider} from "react-native-elements";
 
 interface TasksCardsProps {

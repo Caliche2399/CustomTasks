@@ -1,36 +1,53 @@
-import {View, Text, StyleSheet, TextInput} from "react-native";
+import {View, StyleSheet, TextInput} from "react-native";
 import {Icon} from "react-native-elements";
 import {SearchBar} from "react-native-screens";
-import {useEffect, useState} from "react";
-import {TasksCards} from "../components/TasksCards";
+import {useState} from "react";
+import {TasksCards} from "../components/Tareas/TasksCards";
+import {AddTaskForm} from "../components/Tareas/AddTaskForm";
 
-interface TasksScreenProps {
-  updateTasks?: boolean
-  setUpdateTasks?: (isVisible: boolean) => void;
-}
 
-export default function TasksScreen({updateTasks, setUpdateTasks}: TasksScreenProps) {
+export default function TasksScreen() {
 
   const [search, setSearch] = useState("");
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const [updateTasks, setUpdateTasks] = useState(false);
+
 
   const updateSearch = (search: string) => {
     setSearch(search);
   };
 
   return(
-    <View style={styles.container}>
+    <>
+      <View style={styles.container}>
       <View style={styles.searchBarContainer}>
         <TextInput
           onChangeText={updateSearch}
           style={styles.searchBar}
-          placeholder={"Buscar"}
-        />
-        <SearchBar />
+          placeholder={"Buscar"}/>
+        <SearchBar/>
       </View>
       <View style={styles.cardsContainer}>
         <TasksCards updateTasks={updateTasks} setUpdateTasks={setUpdateTasks} searchQuery={search}/>
       </View>
-    </View>
+      </View>
+      <Icon
+        reverse
+        name="plus"
+        type="font-awesome"
+        color="#65b601"
+        containerStyle={styles.fab}
+        onPress={() => setIsVisible(true)}
+      />
+      <AddTaskForm
+        setUpdateTasks={setUpdateTasks}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+        formTitle={"Añadir Tarea"}
+      />
+    </>
   );
 }
 
